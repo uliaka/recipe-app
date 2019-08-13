@@ -1,12 +1,13 @@
 import React from 'react';
+import './Recipe.css';
 
 
 function Recipe(prop) {
   return (
-    <div>
+    <div className="container-recipe">
+      <img src={prop.image} alt="img" className="img-recipe"/>
       <h1>{prop.title}</h1>
       <p>{prop.calories}</p>
-      <img src={prop.image} alt="img"/>
     </div>
   );
 }

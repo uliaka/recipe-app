@@ -24,7 +24,6 @@ function App() {
 
   function searchUpdate(e) {
     setSearch(e.target.value)
-    console.log(search)
   }
 
   function getSearch(e) {
@@ -36,20 +35,21 @@ function App() {
   return (
     <div className="App">
       <form className="search-form">
-        <input className="search-place" value={search} onChange={searchUpdate}/>
+        <input className="search-place" placeholder="Search..." value={search} onChange={searchUpdate}/>
         <button className="search-button" onClick={getSearch}>
           <span className="search-icon"></span>
         </button>
       </form>
       <div className="list-recipes">
-        {recipes.map(recipe => (
-          <Recipe
-            key={recipe.recipe.label}
-            title={recipe.recipe.label}
-            calories={recipe.recipe.calories}
-            image={recipe.recipe.image}
-          />
-        ))}
+        <div className="grid-container">
+          {recipes.map(recipe => (
+            <Recipe
+              image={recipe.recipe.image}
+              title={recipe.recipe.label}
+              calories={recipe.recipe.calories}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
