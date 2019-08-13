@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-function Recipe({title, calories, image}) {
-  console.log('--------', title)
+function Recipe(prop) {
   return (
     <div>
-      <h1>{title}</h1>
-      <p>{calories}</p>
-      <img src={image} alt=""/>
+      <h1>{prop.title}</h1>
+      <p>{prop.calories}</p>
+      <img src={prop.image} alt=""/>
     </div>
   );
 }
