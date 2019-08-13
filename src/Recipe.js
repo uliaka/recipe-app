@@ -6,7 +6,7 @@ function Recipe(prop) {
     <div>
       <h1>{prop.title}</h1>
       <p>{prop.calories}</p>
-      <img src={prop.image} alt=""/>
+      <img src={prop.image} alt="img"/>
     </div>
   );
 }
