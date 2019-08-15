@@ -68,7 +68,8 @@ body {
   margin: 50px 100px 50px 100px;
   border: 1px solid #5E0F47;
   padding: 50px;
-  background-color: #FDEFE5;
+  position: relative;
+  min-height: 1000px;
 }
 
 .grid-container {
@@ -77,5 +78,28 @@ body {
   grid-template-rows: auto;
   grid-gap: 20px;
   justify-content: center;
+}
 
+.top-img-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.top-img-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.bottom-img-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.bottom-img-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }

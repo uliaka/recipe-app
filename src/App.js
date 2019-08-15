@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Recipe from './components/Recipe.js';
+import imgHeaderLeft from './image/s1.png';
+import imgHeaderRight from './image/s3.jpg';
+import  imgFooterLeft from './image/s2.png';
+import  imgFooterRight from './image/s4.jpg';
+
+
 
 function App() {
 
@@ -41,6 +47,10 @@ function App() {
         </button>
       </form>
       <div className="list-recipes">
+       <img className="top-img-left" src={imgHeaderLeft} />
+       <img className="top-img-right" src={imgHeaderRight} />
+       <img className="bottom-img-left" src={imgFooterLeft} />
+       <img className="bottom-img-right" src={imgFooterRight} />
         <div className="grid-container">
           {recipes.map(recipe => (
             <Recipe
