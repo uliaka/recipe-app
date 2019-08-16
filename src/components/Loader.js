@@ -1,10 +1,14 @@
 import React from 'react';
+import './Loader.css'
 
-function Loader(prop) {
+function Loader() {
+  const containers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   return (
-    <div className="container-recipe-loading">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
-    </div>
+    containers.map(container => (
+      <div className="container-recipe-loading"><span>{container}</span>
+      <div class="loader"></div>
+      </div>
+    ))
   );
 }
 
