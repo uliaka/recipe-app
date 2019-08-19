@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import Recipe from './components/Recipe.js';
 import Loader from './components/Loader.js';
@@ -12,75 +12,85 @@ import RecipeDetails from './components/RecipeDetails.js'
 
 
 
-function App() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: [],
+      search: '',
+      textToSearch: 'chicken',
+      loading: true,
+    }
+    this.searchUpdate = this.searchUpdate.bind(this);
+    this.getRecipes = this.getRecipes.bind(this);
+    this.getSearch = this.getSearch.bind(this);
+    this.onClick = this.onClick.bind(this);
+}
 
-  const YOUR_APP_ID = "049f21d4";
-  const YOUR_APP_KEY = "7d33f695e16118d0c67da63a5522d856";
-
-  const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState('');
-  const [textToSearch, setTextToSearch] = useState('chicken');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getRecipes();
-  }, [textToSearch])
+  //const id = "049f21d4";
+ //const key = "7d33f695e16118d0c67da63a5522d856";
 
 
-  const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=${textToSearch}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}`);
+  componentDidMount() {
+    this.getRecipes()
+  }
+
+  getRecipes = async () => {
+    const response = await fetch(`https://api.edamam.com/search?q=${this.state.textToSearch}&app_id=$049f21d4&app_key=$7d33f695e16118d0c67da63a5522d856`);
     const res = await response.json();
-    setRecipes(res.hits);
+    this.setState({ recipes: res.hits });
     console.log(res.hits)
-    setLoading(false);
+    this.setState({ loading: false});
   }
 
-  function searchUpdate(e) {
-    setSearch(e.target.value)
+  searchUpdate(e) {
+    this.setState({ textToSearch: e.target.value })
   }
 
-  function getSearch(e) {
+  getSearch(e) {
     e.preventDefault();
-    setTextToSearch(search);
-    setSearch('');
+  //  this.setState({search});
+    this.setState({ search: "" });
   }
 
-  function onClick() {
-    console.log('clikk');
-
+  onClick() {
+    this.props.history.push("/recipe");
   }
 
-  return (
-    <div className="App">
-      <form className="search-form">
-        <input className="search-place" placeholder="Search..." value={search} onChange={searchUpdate}/>
-        <button className="search-button" onClick={getSearch}>
-          <span className="search-icon"></span>
-        </button>
-      </form>
-      <div className="list-recipes">
-       <img className="top-img-left" src={imgHeaderLeft} />
-       <img className="top-img-right" src={imgHeaderRight} />
-       <img className="bottom-img-left" src={imgFooterLeft} />
-       <img className="bottom-img-right" src={imgFooterRight} />
-        <div className="grid-container">
-          { loading ? (
-             <Loader />
-          ) : (
-            recipes.map(recipe => (
-                <Recipe
-                  image={recipe.recipe.image}
-                  title={recipe.recipe.label}
-                  calories={recipe.recipe.calories}
-                  ingredients={recipe.recipe.ingredientLines}
-                  onClick={onClick}
-                />
-            ))
-          )}
+  render() {
+    console.log('this.state', this.state)
+    return (
+      <div className="App">
+        <form className="search-form">
+          <input className="search-place" placeholder="Search..." value={this.state.search} onChange={this.searchUpdate}/>
+          <button className="search-button" onClick={this.getSearch}>
+            <span className="search-icon"></span>
+          </button>
+        </form>
+        <div className="list-recipes">
+         <img className="top-img-left" src={imgHeaderLeft} />
+         <img className="top-img-right" src={imgHeaderRight} />
+         <img className="bottom-img-left" src={imgFooterLeft} />
+         <img className="bottom-img-right" src={imgFooterRight} />
+          <div className="grid-container">
+            { this.state.loading ? (
+               <Loader />
+            ) : (
+              this.state.recipes.map(recipe => (
+                  <Recipe
+                    image={recipe.recipe.image}
+                    title={recipe.recipe.label}
+                    calories={recipe.recipe.calories}
+                    ingredients={recipe.recipe.ingredientLines}
+                    onClick={this.onClick}
+                  />
+              ))
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App;

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 function RecipeDetails (prop) {
   return (
-  <p>kjbljclbjxblxjbj</p>
-)
+    <p>Recipe page</p>
+ )
 }
 
 
