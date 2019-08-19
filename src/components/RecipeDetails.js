@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
-function RecipeDetails (prop) {
+function RecipeDetails (props) {
+  const title = props.match.params.id;
   return (
-    <p>Recipe page</p>
+    <Fragment>
+      <p>Recipe page</p>
+
+        {JSON.stringify(props)}
+    </Fragment>
  )
 }
 

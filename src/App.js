@@ -53,8 +53,11 @@ class App extends React.Component {
     this.setState({ search: "" });
   }
 
-  onClick() {
-    this.props.history.push("/recipe");
+  onClick(recipe) {
+    const { title, image, calories, ingredients } = recipe;
+    this.props.history.push(`/recipe/${title}`, {
+      title, image, calories, ingredients
+    });
   }
 
   render() {
