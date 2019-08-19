@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Recipe from './components/Recipe.js';
 import Loader from './components/Loader.js';
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import imgHeaderLeft from './image/s1.png';
 import imgHeaderRight from './image/s3.jpg';
 import  imgFooterLeft from './image/s2.png';
 import  imgFooterRight from './image/s4.jpg';
+import RecipeDetails from './components/RecipeDetails.js'
 
 
 
@@ -28,6 +31,7 @@ function App() {
     const response = await fetch(`https://api.edamam.com/search?q=${textToSearch}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}`);
     const res = await response.json();
     setRecipes(res.hits);
+    console.log(res.hits)
     setLoading(false);
   }
 
@@ -39,6 +43,11 @@ function App() {
     e.preventDefault();
     setTextToSearch(search);
     setSearch('');
+  }
+
+  function onClick() {
+    console.log('clikk');
+
   }
 
   return (
@@ -55,17 +64,19 @@ function App() {
        <img className="bottom-img-left" src={imgFooterLeft} />
        <img className="bottom-img-right" src={imgFooterRight} />
         <div className="grid-container">
-        { loading ? (
-           <Loader />
-        ) : (
-          recipes.map(recipe => (
-            <Recipe
-              image={recipe.recipe.image}
-              title={recipe.recipe.label}
-              calories={recipe.recipe.calories}
-            />
-          ))
-        )}
+          { loading ? (
+             <Loader />
+          ) : (
+            recipes.map(recipe => (
+                <Recipe
+                  image={recipe.recipe.image}
+                  title={recipe.recipe.label}
+                  calories={recipe.recipe.calories}
+                  ingredients={recipe.recipe.ingredientLines}
+                  onClick={onClick}
+                />
+            ))
+          )}
         </div>
       </div>
     </div>
