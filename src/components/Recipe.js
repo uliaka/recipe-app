@@ -1,13 +1,13 @@
 import React from 'react';
 import './Recipe.css';
 
-function Recipe(prop) {
+function Recipe(props) {
     return (
-       <div onClick={() => prop.onClick(prop)}
+       <div onClick={() => props.onClick(props)}
             className="container-recipe">
-         <img src={prop.image} alt="img" className="img-recipe"/>
-         <h1>{prop.title}</h1>
-         <p>{prop.calories}</p>
+         <img src={props.image} alt="img" className="img-recipe"/>
+         <h1>{props.title}</h1>
+         <p>{props.calories}</p>
        </div>
     );
   }

@@ -1,0 +1,30 @@
+body {
+  display: block;
+}
+
+.recipe-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;;
+}
+
+.container {
+  border: 1px solid  #5E0F47;
+  padding: 60px;
+}
+
+.container h1 {
+  font-size: 50px;
+  margin-bottom: 60px;
+}
+
+.container ul {
+  text-align: left;
+  font-size: 25px;
+  text-transform: lowercase;
+}
+
+.container li {
+  list-style: circle;
+}

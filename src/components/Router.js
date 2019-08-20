@@ -10,7 +10,7 @@ function RouterComponent() {
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/recipe" component={RecipeDetails} />
+        <Route path="/recipe/:id" component={RecipeDetails} />
       </Switch>
     </Router>
   );
