@@ -8,12 +8,13 @@ import imgHeaderLeft from './image/s1.png';
 import imgHeaderRight from './image/s3.jpg';
 import  imgFooterLeft from './image/s2.png';
 import  imgFooterRight from './image/s4.jpg';
-import RecipeDetails from './components/RecipeDetails.js'
-
+import RecipeList from './components/RecipeList.js'
+import { Provider } from 'react-redux';
+import store from './store';
 
 
 class App extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = {
       recipes: [],
@@ -59,39 +60,15 @@ class App extends React.Component {
       title, image, calories, ingredients
     });
   }
-
+*/
   render() {
     console.log('this.state', this.state)
     return (
+      <Provider store={store}>
       <div className="App">
-        <form className="search-form">
-          <input className="search-place" placeholder="Search..." value={this.state.search} onChange={this.searchUpdate}/>
-          <button className="search-button" onClick={this.getSearch}>
-            <span className="search-icon"></span>
-          </button>
-        </form>
-        <div className="list-recipes">
-         <img className="top-img-left" src={imgHeaderLeft} />
-         <img className="top-img-right" src={imgHeaderRight} />
-         <img className="bottom-img-left" src={imgFooterLeft} />
-         <img className="bottom-img-right" src={imgFooterRight} />
-          <div className="grid-container">
-            { this.state.loading ? (
-               <Loader />
-            ) : (
-              this.state.recipes.map(recipe => (
-                  <Recipe
-                    image={recipe.recipe.image}
-                    title={recipe.recipe.label}
-                    calories={recipe.recipe.calories}
-                    ingredients={recipe.recipe.ingredientLines}
-                    onClick={this.onClick}
-                  />
-              ))
-            )}
-          </div>
-        </div>
+       <RecipeList />
       </div>
+      </Provider>
     )
   }
 }

@@ -1,3 +1,8 @@
 .container-recipe {
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.img-recipe {
+  size: 50px;
 }
