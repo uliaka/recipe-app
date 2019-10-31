@@ -10,7 +10,8 @@ import  imgFooterLeft from './image/s2.png';
 import  imgFooterRight from './image/s4.jpg';
 import RecipeList from './components/RecipeList.js'
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './redux/store';
+import AddRecipe from './components/AddRecipe.js';
 
 
 class App extends React.Component {
@@ -62,10 +63,10 @@ class App extends React.Component {
   }
 */
   render() {
-    console.log('this.state', this.state)
     return (
       <Provider store={store}>
       <div className="App">
+       <AddRecipe/>
        <RecipeList />
       </div>
       </Provider>

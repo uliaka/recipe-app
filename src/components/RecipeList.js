@@ -1,7 +1,7 @@
 import React from 'react';
 import Recipe from './Recipe.js';
 import { connect } from 'react-redux';
-import fetchRecipies from '../actions/recipeActions';
+import fetchRecipies from '../redux/actions/recipeActions.js';
 
 class recipeList extends React.Component {
   componentDidMount() {

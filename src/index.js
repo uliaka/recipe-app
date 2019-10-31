@@ -4,15 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import RecipeDetails from './components/RecipeDetails.js'
+import RecipeDetails from './components/RecipeDetails.js';
+import AddRecipe from './components/AddRecipe.js'
 
 
 function RouterComponent() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={App} />
-        <Route path="/recipe/:id" component={RecipeDetails} />
+        <Route exact path="/recipies" component={App} />
+        <Route path="/recipes/:id" component={RecipeDetails} />
       </Switch>
     </Router>
   );
